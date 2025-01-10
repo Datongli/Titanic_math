@@ -3,17 +3,17 @@
 """
 from Bayes import Bayes
 from readData import csv2data
-from Passenger import Passenger
 
 
-def dataProcess(dataPath: str, dataList: list):
+def dataProcess(dataPath: str, dataList: list, trainOrNot: bool = True):
     """
     数据处理
     :param dataPath: 数据路径
     :param dataList: 传入的数据空列表
+    :param trainOrNot: 是否为训练集，默认为True
     :return: 就地填充dataList，无返回值
     """
-    csv2data(dataPath, dataList)
+    csv2data(dataPath, dataList, trainOrNot)
 
 
 if __name__ == "__main__":
@@ -23,6 +23,8 @@ if __name__ == "__main__":
     trainData = []  # 用于存储训练数据的列表，内部为Passenger对象
     testData = []  # 用于存储测试数据的列表，内部为Passenger对象
     dataProcess(trainPath, trainData)
-    dataProcess(testPath, testData)
+    dataProcess(testPath, testData, False)
     """实例化贝叶斯对象"""
     bayes = Bayes(trainData)  # 实例化贝叶斯对象
+    bayes.train()  # 训练贝叶斯模型
+    bayes.test(testData)  # 测试贝叶斯模型
