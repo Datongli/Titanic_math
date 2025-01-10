@@ -16,3 +16,5 @@
   - 贝叶斯模型
   - 用于训练和预测
   - 输出预测结果
+# 项目地址
+https://github.com/Datongli/Titanic_math.git
