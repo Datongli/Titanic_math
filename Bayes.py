@@ -68,7 +68,7 @@ class Bayes:
         :return: 计算所的的条件概率字典，原地填充self.P_X_Y，无返回值
         """
         # 构建一个列表，用于存储passenger类的各个静态变量名
-        static_variable_names = self.__getVariableName()
+        static_variable_names = self._getVariableName()
         # 计算条件概率
         for survivedOrNot, _ in Passenger.survived.items():  # 分别对生还与否两种状态计算
             for variableName in static_variable_names:  # 分别对各个变量计算
@@ -80,7 +80,7 @@ class Bayes:
                             / (Passenger.survived[survivedOrNot] + self.lammda * len(variable_dict)))
 
     @staticmethod
-    def __getVariableName():
+    def _getVariableName():
         """
         获取passenger类的各个静态变量名
         静态方法
@@ -117,7 +117,7 @@ class Bayes:
         :return: 预测结果列表
         """
         # 构建一个列表，用于存储passenger类的各个静态变量名
-        static_variable_names = self.__getVariableName()
+        static_variable_names = self._getVariableName()
         for passenger in testData:
             ans = []  # 承接一个乘客的生还和死亡概率
             # 计算Y=0的概率
