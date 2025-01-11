@@ -79,7 +79,13 @@ class Bayes:
                     self.P_X_Y[variableName + '=' + str(variableValue) + '|Y=' + str(survivedOrNot)] = ((count + self.lammda)
                             / (Passenger.survived[survivedOrNot] + self.lammda * len(variable_dict)))
 
-    def __getVariableName(self):
+    @staticmethod
+    def __getVariableName():
+        """
+        获取passenger类的各个静态变量名
+        静态方法
+        :return: 包含Passenger类中各个静态变量名的列表
+        """
         static_variable_names = []
         members = inspect.getmembers(Passenger)
         for member in members:
